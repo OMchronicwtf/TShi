@@ -1,6 +1,7 @@
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import re
+from keep_alive import keep_alive  # Import keep-alive function
 
 # Placeholder bot token
 TOKEN = "7744323494:AAHv5DP9E-IJBP8rKu_Y27vSyU30MuDa83o"
@@ -62,6 +63,9 @@ def send_final_message(chat_id):
 
     bot.send_message(chat_id, escape_markdown(data["text"]), reply_markup=markup, parse_mode="MarkdownV2")
     bot.send_message(chat_id, "✅ Message sent\\! Use /new to create another\\.")
+
+# Keep the bot alive
+keep_alive()
 
 # Run the bot
 bot.polling()
